@@ -16,3 +16,8 @@ window.onload = () => {
     document.getElementById('root')
   )
 }
+
+window.onMessage('select:dir', (event, data) => {
+  console.log("render.on(select:dir)", data)
+  store.dispatch({ type: 'CONFIG_ADD_DIR', ...data })
+})

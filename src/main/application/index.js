@@ -1,5 +1,8 @@
+import { app } from 'electron'
 import { Application } from 'nucleon'
+import path from 'path'
 import Window from 'window'
+import mainEvents from './events'
 
 export default class Hokan extends Application {
   components() {
@@ -18,7 +21,7 @@ export default class Hokan extends Application {
       height: this.settings.height,
       devTools: this.settings.devTools,
       webPreferences: {
-        sandbox: false,
+        preload: path.join(app.getAppPath(), 'preload', 'index.js'),
         webSecurity: false,
       }
     }
@@ -32,6 +35,7 @@ export default class Hokan extends Application {
     this.window.removeMenu()
     this.window.disableNavigation()
     this.setupWindowEvents()
+    this.call(mainEvents)
   }
 
   setupWindowEvents() {

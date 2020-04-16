@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Config from './config';
 import Files from './files';
 
 const useStyles = makeStyles(theme => ({
@@ -20,6 +21,9 @@ export default () => {
     <main className={classes.content}>
       <div className={classes.toolbar} />
       {files ? <Files list={files} /> : ''}
-    </main>
+      <Config />
+    </main >
   )
 }
+
+// Breadcrumbs
