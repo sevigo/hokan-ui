@@ -14,15 +14,15 @@ const useStyles = makeStyles({
     },
 });
 
-// "Info": "{\"ModTime\":\"2020-03-10T18:33:07.038893+01:00\",\"Mode\":438,\"Name\":\"66860812_p0.png\",\"Size\":822093}",
 const renderFileInfo = (file) => {
     let info
+
     try {
         info = JSON.parse(file.Info);
     } catch (err) {
-        console.log('renderFileInfo(): JSON.parse');
         console.log(err);
     }
+
     return (
         <TableRow key={file.Path}>
             <TableCell component="th" scope="row">

@@ -41,7 +41,24 @@ const getTargets = (dispatch) => {
     });
 }
 
-export default () => {
+const getDirectories = (dispatch) => {
+  console.log('getDirectories():');
+  fetch(`http://localhost:8081/api/directories`)
+    .then(res => res.json())
+    .then((data) => {
+      if (data.meta.total_items > 0) {
+        dispatch({ type: 'GET_DIR_LIST', data });
+      } else {
+        dispatch({ type: 'FLOW_SETUP_DIR' });
+      }
+    })
+    .catch(err => {
+      console.log('getTargetFiles(): failure');
+      console.log(err);
+    });
+}
+
+export default ({ info }) => {
   const classes = useStyles();
   const dispatch = useDispatch()
   const targets = useSelector(state => state.targets)
@@ -67,6 +84,7 @@ export default () => {
   // code to run on component mount
   useEffect(() => {
     getTargets(dispatch)
+    getDirectories(dispatch)
   }, [])
 
   return (
@@ -105,7 +123,7 @@ export default () => {
         </List>
       </Collapse>
 
-      <Version />
+      <Version info={info} />
     </Drawer>
   )
 }

@@ -69,6 +69,7 @@ module.exports = {
       ]
     }
   },
+  preload: {},
   main: {
     target: 'electron-main',
     module: {

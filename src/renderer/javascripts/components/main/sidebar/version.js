@@ -21,18 +21,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const getVersion = (dispatch) => {
-    fetch('http://localhost:8081/version')
-        .then(res => res.json())
-        .then((data) => {
-            dispatch({ type: 'SET_VERSION', data });
-        })
-        .catch(err => {
-            console.log('getVersion(): failure');
-            console.log(err);
-        });
-}
-
 const getStatus = (dispatch) => {
     fetch('http://localhost:8081/healthz')
         .then(() => {
@@ -45,15 +33,13 @@ const getStatus = (dispatch) => {
         });
 }
 
-const Version = () => {
+const Version = ({ info }) => {
     const dispatch = useDispatch()
-    const ver = useSelector(state => state.version)
     const status = useSelector(state => state.status)
-    const classes = useStyles();
+    const classes = useStyles()
 
     // code to run on component mount
     useEffect(() => {
-        getVersion(dispatch)
         getStatus(dispatch)
         setInterval(() => {
             getStatus(dispatch)
@@ -69,7 +55,7 @@ const Version = () => {
                         ? <CheckCircleRoundedIcon style={{ color: green[500], paddingRight: "10px" }} />
                         : <ErrorRoundedIcon style={{ color: red[500], paddingRight: "10px" }} />
                     }
-                    <ListItemText primary={`Hokan ${ver}`} />
+                    {info ? <ListItemText primary={`Hokan ${info.version}`} /> : ''}
                 </ListItem>
             </List>
         </span>
