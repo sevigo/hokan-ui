@@ -57,7 +57,8 @@ const getDirectories = (dispatch) => {
       console.log(err);
     });
 }
-export default () => {
+
+export default ({ info }) => {
   const classes = useStyles();
   const dispatch = useDispatch()
   const targets = useSelector(state => state.targets)
@@ -122,7 +123,7 @@ export default () => {
         </List>
       </Collapse>
 
-      <Version />
+      <Version info={info} />
     </Drawer>
   )
 }

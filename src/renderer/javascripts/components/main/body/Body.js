@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default () => {
+export default ({ info }) => {
   const classes = useStyles();
   const files = useSelector(state => state.files)
 
@@ -21,9 +21,7 @@ export default () => {
     <main className={classes.content}>
       <div className={classes.toolbar} />
       {files ? <Files list={files} /> : ''}
-      <Config />
+      <Config info={info} />
     </main >
   )
 }
-
-// Breadcrumbs

@@ -1,14 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Dirs from './directories';
+import DirConfig from './config/dir';
 
-const Config = () => {
+const Config = ({ info }) => {
     const flow = useSelector(state => state.flow)
+
     switch (flow.name) {
         case 'setup:dir':
             return (
                 <div className="aside">
-                    <Dirs />
+                    <DirConfig info={info} />
                 </div>
             )
         default:

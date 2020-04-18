@@ -3,15 +3,15 @@ import config from './config'
 import directories from './directories'
 import files from './files'
 import flow from './flow'
+import info from './info'
 import status from './status'
 import targets from './targets'
-import version from './version'
 
 export default combineReducers({
   config,
   flow,
   directories,
-  version,
+  info,
   files,
   targets,
   status
