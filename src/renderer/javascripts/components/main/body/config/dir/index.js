@@ -7,12 +7,6 @@ const handleClick = () => {
     window.postMessage({ type: 'select:dir' })
 }
 
-
-// import { makeStyles } from '@material-ui/core/styles';
-// const useStyles = makeStyles(theme => ({
-//     confroot: {},
-// }));
-
 const DirConfig = ({ info }) => {
     // const classes = useStyles();
     const selectedPath = useSelector(state => state.config)

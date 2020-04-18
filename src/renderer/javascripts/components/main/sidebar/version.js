@@ -37,7 +37,6 @@ const Version = ({ info }) => {
     const dispatch = useDispatch()
     const status = useSelector(state => state.status)
     const classes = useStyles()
-    // const ver = info.version
 
     // code to run on component mount
     useEffect(() => {

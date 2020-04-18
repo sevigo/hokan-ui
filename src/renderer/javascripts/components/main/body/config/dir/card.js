@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const DirConfigCard = ({ path, machine }) => {
+const DirConfigCard = ({ path, info }) => {
     const classes = useStyles();
     const targets = ["Google Drive", "AWS", "MinIO", "Local"]
 
